@@ -76,7 +76,7 @@ The captured noisy depth maps are then used to **reconstruct a 3D surface** of t
 * Demonstrates how to reconstruct physical geometry from synthetic sensor data inside a physics simulator.
 
 <p align="center">
-  <img src="docs/reconstruction_example.png" width="80%" alt="3D Reconstruction Example">
+  <img src="https://raw.githubusercontent.com/Sjschhabra/mujoco-depth-reconstruction/refs/heads/main/images/Screenshot%202025-11-19%20113425.png" width="80%" alt="3D Reconstruction Example">
 </p>
 
 ---
