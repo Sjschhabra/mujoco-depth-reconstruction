@@ -2,6 +2,10 @@
 
 ### Simulating depth perception and 3D surface reconstruction with a robotic arm in **MuJoCo**.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Sjschhabra/mujoco-depth-reconstruction/refs/heads/main/images/newplot.png" 
+       width="80%" alt="MuJoCo Depth Reconstruction Simulation"/>
+</p>
 ---
 
 ## 🧩 Overview
