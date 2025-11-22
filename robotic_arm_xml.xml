@@ -1,0 +1,160 @@
+<mujoco model="custom_robot">
+  <compiler angle="radian" autolimits="true"/>
+  
+  <option timestep="0.001" gravity="0 0 -9.81"/>
+  
+  <size njmax="500" nconmax="100"/>
+
+  <visual>
+    <global fovy="45"/>
+    <map znear="0.01"/>
+    <headlight diffuse="0.8 0.8 0.8" ambient="0.5 0.5 0.5"/>
+  </visual>
+
+  <asset>
+    <material name="blue" rgba="0 0 1 1"/>
+    <material name="green" rgba="0 1 0 1"/>
+    <material name="red" rgba="1 0 0 1"/>
+    <material name="yellow" rgba="1 1 0 1"/>
+    <material name="purple" rgba="0.5 0 0.5 1"/>
+    <material name="cyan" rgba="0 1 1 1"/>
+    <material name="sphere_color" rgba="1.0 0.7 0.0 1.0"/>
+    <material name="joint_sphere" rgba="1.0 0.0 0.0 1.0"/>
+    
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" 
+             rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" 
+             width="300" height="300" markrgb="0.8 0.8 0.8"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" 
+              reflectance="0.2"/>
+  </asset>
+
+  <worldbody>
+    <geom name="floor" type="plane" size="0 0 0.005" material="groundplane"/>
+    
+      <body name="cube" pos="0.2 0.35 0.05">
+        <geom name="cube_geom" type="box" size="0.1 0.1 0.1" rgba="1 0 0 1"/>
+        <body name="cylinder" pos="0.1 0.35 0">
+        <geom name="cylinder_geom" type="cylinder" size="0.1 0.1" rgba="1 0 0 1"/>
+        </body>
+      </body>
+
+      <body name="sphere" pos="0.5 0.5 0.05">
+        <geom name="sphere_geom" type="sphere" size="0.1" rgba="1 1 0 1"/>
+      </body>
+
+      <body name="origin" pos="0 0 0">
+        <geom name="origin_geom" type="sphere" size="0.1" rgba="0 0 0 1"/>
+      </body>
+
+      <geom name="track_geom1" type="box" pos="0 0.05 0" size="2 0.01 0.005" rgba="1 1 1 1"/>
+      <geom name="track_geom2" type="box" pos="0 -0.05 0" size="2 0.01 0.005" rgba="1 1 1 1"/>
+
+      <geom name="trackend_geom1" type="box" pos="2.02 0 0" size="0.04 0.1 0.01" rgba="1 1 1 1"/>
+      <geom name="trackend_geom2" type="box" pos="-2.02 0 0" size="0.04 0.1 0.01" rgba="1 1 1 1"/>
+
+      <body name="slider_mount" pos="0 0 0.01">
+
+      <geom name="slider_mount_geom" type="box" size="0.15 0.1 0.005" mass="0.1" contype="0" conaffinity="0" rgba="1 0.3 0.3 1"/>
+
+      <!-- Slider joint -->
+      <joint name="slider" type="slide" axis="1 0 0"
+            range="-0.2 0.2" damping="0.0"/>
+
+      <body name="link1" pos="0 0 0">
+        <joint name="joint1" type="hinge" axis="0 0 1" 
+               range="-3.141592653589793 3.141592653589793" 
+               damping="50.0"/>
+        
+        <geom name="link1_base" type="cylinder" size="0.08 0.005" 
+              pos="0 0 0.005" material="sphere_color" mass="0.2"/>
+        <geom name="link1_main" type="cylinder" size="0.035 0.105" 
+              pos="0 0 0.105" material="blue" mass="0.5"/>
+        
+        <body name="link2" pos="0 0 0.21" quat="0.707107 -0.707107 0 0">
+          <joint name="joint2" type="hinge" axis="0 0 1" 
+                 range="-3.141592653589793 0" 
+                 damping="50.0"/>
+          
+          <geom name="link2_sphere1" type="sphere" size="0.035" 
+                material="joint_sphere"/>
+          <geom name="link2_cyl1" type="cylinder" size="0.035 0.05475" 
+                pos="0 0 0.05475" material="green" mass="0.3"/>
+          <geom name="link2_sphere2" type="sphere" size="0.035" 
+                pos="0 0 0.107" material="joint_sphere"/>
+          <geom name="link2_cyl2" type="cylinder" size="0.035 0.125" 
+                pos="0.125 0 0.107" quat="0.707107 0 0.707107 0" material="green" mass="0.3"/>
+          <geom name="link2_sphere3" type="sphere" size="0.035" 
+                pos="0.25 0 0.107" material="joint_sphere"/>
+          <geom name="link2_cyl3" type="cylinder" size="0.035 0.05475" 
+                pos="0.25 0 0.05475" material="green" mass="0.3"/>
+          
+          <body name="link3" pos="0.25 0 0">
+            <joint name="joint3" type="hinge" axis="0 0 1" 
+                   range="-2.6179938779914944 2.6179938779914944" 
+                   damping="40.0"/>
+            
+            <geom name="link3_sphere" type="sphere" size="0.035" 
+                  material="joint_sphere"/>
+            <geom name="link3_cyl" type="cylinder" size="0.035 0.125" 
+                  pos="0.125 0 0" quat="0.707107 0 0.707107 0" material="red" mass="0.3"/>
+            
+            <body name="link4" pos="0.25 0 0">
+              <joint name="joint4" type="hinge" axis="0 0 1" 
+                     range="-4.53786 1.3962634015954636" 
+                     damping="30.0"/>
+              
+              <geom name="link4_sphere" type="sphere" size="0.035" 
+                    material="joint_sphere"/>
+              <geom name="link4_cyl" type="cylinder" size="0.035 0.05475" 
+                    pos="0 0 0.05475" material="yellow" mass="0.2"/>
+              
+              <body name="link5" pos="0 0 0.1095" quat="0.707107 -0.707107 0 0">
+                <joint name="joint5" type="hinge" axis="0 0 1" 
+                       range="-2.93215 2.93215" 
+                       damping="20.0"/>
+                
+                <geom name="link5_sphere1" type="sphere" size="0.035" 
+                      material="joint_sphere"/>
+                <geom name="link5_cyl" type="cylinder" size="0.035 0.0535" 
+                      pos="0 0 0.0535" material="purple" mass="0.15"/>
+                <geom name="link5_sphere2" type="sphere" size="0.035" 
+                      pos="0 0 0.107" material="joint_sphere"/>
+                
+                <body name="link6" pos="0 -0.0762 0.107" quat="0.707107 0.707107 0 0">
+                  <joint name="joint6" type="hinge" axis="0 0 1" 
+                         range="-3.03687 3.03687" 
+                         damping="2"/>
+                  
+                  <geom name="link6_sphere" type="sphere" size="0.02" 
+                        material="joint_sphere"/>
+
+                  <geom name="link6_cyl" type="cylinder" size="0.035 0.0381" 
+                        pos="0 0 -0.0381" material="cyan" mass="0.1"/>
+                  
+                  <site name="ee_site" pos="0 0 -0.0762" size="0.01" 
+                        rgba="1 0 0 1"/>
+                  
+                  <geom name="camera_cube" type="box" size="0.015 0.015 0.015" 
+                        pos="0 0 -0.0762" rgba="1 1 0 1" contype="0" conaffinity="0"/>
+                  
+                  <!-- Camera -->
+                  <camera name="{camera}" pos="0 0 0.0762" xyaxes="-1 0 0 0 1 0" fovy="{fovy}"/>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+ <actuator>
+   <position name="slider_actuator" joint="slider" kp="500" ctrlrange="-2 2"/>
+   <position name="actuator1" joint="joint1" kp="30" ctrlrange="-3.141592653589793 3.141592653589793"/>
+   <position name="actuator2" joint="joint2" kp="10" ctrlrange="-3.141592653589793 0"/>
+   <position name="actuator3" joint="joint3" kp="8"  ctrlrange="-2.6179938779914944 2.6179938779914944"/>
+   <position name="actuator4" joint="joint4" kp="6" ctrlrange="-4.53786 1.3962634015954636"/>
+   <position name="actuator5" joint="joint5" kp="4" ctrlrange="-2.93215 2.93215"/>
+   <position name="actuator6" joint="joint6" kp="3" ctrlrange="-3.03687 3.03687"/>
+</actuator>
+</mujoco>
