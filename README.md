@@ -104,7 +104,7 @@ The captured noisy depth maps are then used to **reconstruct a 3D surface** of t
 
 ```bash
 # Clone the repo
-git clone https://github.com/<your-username>/mujoco-depth-reconstruction.git
+git clone https://github.com/Sjschhabra/mujoco-depth-reconstruction.git
 cd mujoco-depth-reconstruction
 
 # Install dependencies
