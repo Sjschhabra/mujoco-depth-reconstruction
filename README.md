@@ -7,6 +7,8 @@
        width="47%" alt="3D Reconstruction Plot"/>
   <img src="https://raw.githubusercontent.com/Sjschhabra/mujoco-depth-reconstruction/refs/heads/main/images/download.gif"
        width="47%" alt="MuJoCo Simulation Screenshot"/>
+  <img src="https://raw.githubusercontent.com/Sjschhabra/mujoco-depth-reconstruction/refs/heads/main/images/download2.gif"
+       width="47%" alt="MuJoCo Simulation Screenshot"/>
 </p>
 
 ---
