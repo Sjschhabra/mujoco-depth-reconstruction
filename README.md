@@ -111,7 +111,7 @@ cd mujoco-depth-reconstruction
 pip install mujoco open3d plotly numpy
 
 # Run the simulation
-python simulate_robotic_arm.py
+# File: Project.ipynb
 ```
 
 ---
