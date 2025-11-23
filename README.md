@@ -24,7 +24,7 @@ The captured noisy depth maps are then used to **reconstruct a 3D surface** of t
 
 ## ⚙️ Simulation Setup
 
-* **Environment:** MuJoCo (8 DoF arm + slider)
+* **Environment:** MuJoCo (6 DoF arm + slider)
 * **Sensor:** Stereo depth camera on end effector (`fovy ≈ 90°`)
 * **Scene Objects:** Sphere, cube, and cylinder
 * **Noise Model:** Gaussian depth noise proportional to range
