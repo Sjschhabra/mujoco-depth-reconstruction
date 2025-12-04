@@ -1,4 +1,5 @@
-<mujoco model="custom_robot">
+<!-- By Sameerjeet Singh Chhabra, https://sjschhabra.github.io/ -->
+<mujoco model="custom_robot_by_Sameerjeet">
   <compiler angle="radian" autolimits="true"/>
   
   <option timestep="0.001" gravity="0 0 -9.81"/>
@@ -157,4 +158,5 @@
    <position name="actuator5" joint="joint5" kp="4" ctrlrange="-2.93215 2.93215"/>
    <position name="actuator6" joint="joint6" kp="3" ctrlrange="-3.03687 3.03687"/>
 </actuator>
+
 </mujoco>
