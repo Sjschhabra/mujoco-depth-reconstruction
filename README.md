@@ -112,7 +112,7 @@ cd mujoco-depth-reconstruction
 # Install dependencies
 pip install mujoco open3d plotly numpy
 
-# Run the simulation
+## Run the simulation
 # File: Project.ipynb
 ```
 
